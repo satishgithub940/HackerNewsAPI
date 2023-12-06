@@ -37,7 +37,7 @@ namespace HackerNews
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                 builder => builder.WithOrigins("https://angularhackernewswebapp.azurewebsites.net/")
+                 builder => builder.WithOrigins("http://localhost:4200", "https://angularhackernewswebapp.azurewebsites.net")
                                    .AllowAnyMethod()
                                    .AllowAnyHeader()
                                    .AllowCredentials());

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uRSNNsEIei75VhXWxVSaCmiofxthXBdnVHI8OG8gHopeyisS+wivBOkQ+Ytyl5ZKTx/paAbZEguIU3Qol/Yqtg==",
+  "dgSpecHash": "qI+3TD0Qx5Gc6mR5xlBAApYed3Ie8IWBkGNby/czWOSExsndWub7xgt1kY1fisp+f6WW/H+3tf+6x0SjHmVtXQ==",
   "success": true,
-  "projectFilePath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj",
+  "projectFilePath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jagdi\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\jagdi\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",

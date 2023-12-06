@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj": {}
+    "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj": {}
   },
   "projects": {
-    "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj": {
+    "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj",
+        "projectUniqueName": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj",
         "projectName": "HackerNewsUnitTestCase",
-        "projectPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj",
+        "projectPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNewsUnitTestCase\\HackerNewsUnitTestCase.csproj",
         "packagesPath": "C:\\Users\\jagdi\\.nuget\\packages\\",
-        "outputPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNewsUnitTestCase\\obj\\",
+        "outputPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNewsUnitTestCase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jagdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\HackerNews.csproj": {
-                "projectPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\HackerNews.csproj"
+              "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNews\\HackerNews.csproj": {
+                "projectPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNews\\HackerNews.csproj"
               }
             }
           }
@@ -97,14 +97,14 @@
         }
       }
     },
-    "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\HackerNews.csproj": {
+    "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNews\\HackerNews.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\HackerNews.csproj",
+        "projectUniqueName": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNews\\HackerNews.csproj",
         "projectName": "HackerNews",
-        "projectPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\HackerNews.csproj",
+        "projectPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNews\\HackerNews.csproj",
         "packagesPath": "C:\\Users\\jagdi\\.nuget\\packages\\",
-        "outputPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\obj\\",
+        "outputPath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\Git repo project\\HackerNews\\HackerNews\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jagdi\\AppData\\Roaming\\NuGet\\NuGet.Config",

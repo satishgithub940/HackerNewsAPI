@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'HackerNewsWebAPIService'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F2B1BABD4C2D41389D12A9CADEE45D09 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_99166D5DF2EE48C0BBA9788F6E58A519 }}
           package: .

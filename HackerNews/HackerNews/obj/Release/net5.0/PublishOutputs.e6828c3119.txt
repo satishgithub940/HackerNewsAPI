@@ -1,0 +1,11 @@
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\HackerNews.exe
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\appsettings.json
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\HackerNews.dll
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\HackerNews.deps.json
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\HackerNews.runtimeconfig.json
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\HackerNews.pdb
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Satish\Resume 2023\Extentia\R system\HackerNews\HackerNews\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "EDlGCNXkL1VqPohP53Vw4bL6C4IvdYIqWKR4lilEtX7bFZDE7VEjiH0aGxnXsGeaLusJxZx6Dwc9FP9q9JFuvA==",
+  "success": true,
+  "projectFilePath": "D:\\Satish\\Resume 2023\\Extentia\\R system\\HackerNews\\HackerNews\\HackerNews.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jagdi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\jagdi\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\jagdi\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\jagdi\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\jagdi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\jagdi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}

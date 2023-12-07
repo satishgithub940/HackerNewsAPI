@@ -16,14 +16,7 @@ namespace HackerNews.Controllers
 
         [HttpGet]
         [Route("api/GetHackerNews")]
-        public ActionResult Index() 
-        {
-            var result = _iRackerNews.GetHackerNews();
-            return Ok(result);
-        }
-        [HttpGet]
-        [Route("api/GetHackerNews1")]
-        public ActionResult Index1()
+        public ActionResult GetHackerNews() 
         {
             var result = _iRackerNews.GetHackerNews();
             return Ok(result);

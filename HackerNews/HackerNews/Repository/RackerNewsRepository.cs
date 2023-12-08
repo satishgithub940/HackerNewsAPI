@@ -15,11 +15,9 @@ namespace HackerNews.Repository
     public class RackerNewsRepository : IRackerNewsRepository
     {
         private readonly IMemoryCache _memoryCache;
-        private readonly ILogger _logger;
-        public RackerNewsRepository(IMemoryCache memoryCache, ILogger logger)
+        public RackerNewsRepository(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
-            _logger = logger;
         }
 
         public List<NewsDbo> GetNewsCacheData()
@@ -36,7 +34,6 @@ namespace HackerNews.Repository
             }
             catch (Exception ex)
             {
-                _logger.LogError("GetNewsCacheData Repository Error Exception : " + ex);
                 throw;
             }
         }
@@ -59,7 +56,6 @@ namespace HackerNews.Repository
             }
             catch (Exception ex)
             {
-                _logger.LogError("SetHackerNewsData Repository Error Exception : " + ex);
                 throw;
 
             }

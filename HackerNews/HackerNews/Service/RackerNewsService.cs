@@ -16,13 +16,11 @@ namespace HackerNews.Service
     {
         public static IConfiguration _configuration;
         public static IRackerNewsRepository _iRackerNewsRepository;
-        private  readonly ILogger _logger;
 
-        public RackerNewsService(IRackerNewsRepository iRackerNewsRepository, IConfiguration configuration, ILogger logger)
+        public RackerNewsService(IRackerNewsRepository iRackerNewsRepository,IConfiguration configuration)
         {
             _iRackerNewsRepository = iRackerNewsRepository;
             _configuration = configuration;
-            _logger = logger;
         }
         public List<NewsDbo> GetHackerNews()
         {
@@ -42,7 +40,6 @@ namespace HackerNews.Service
             }
             catch (Exception ex)
             {
-                _logger.LogError("GetHackerNews Service Error Exception : " + ex);
                 throw;
             }
         }
@@ -79,7 +76,6 @@ namespace HackerNews.Service
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError("CallNewsIds API Service Error Exception : " + ex);
                     throw;
                 }
             }
@@ -105,7 +101,6 @@ namespace HackerNews.Service
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError("CallNewsIds API Service Error Exception : " + ex);
                     throw;
                 }
             }

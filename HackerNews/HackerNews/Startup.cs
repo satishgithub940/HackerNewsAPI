@@ -31,8 +31,7 @@ namespace HackerNews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add logging
-            services.AddLogging();
+           
             // Add MemoryCache
             services.AddMemoryCache();
             services.AddScoped<IRackerNews, RackerNewsService>();
@@ -64,13 +63,15 @@ namespace HackerNews
                 app.UseDeveloperExceptionPage();
               
             }
+           
+            app.UseRouting();
             // Add the custom exception handling middleware
             app.UseMiddleware<GlobalExceptionHandler>();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HackerNews v1"));
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+           
 
             app.UseAuthorization();
             app.UseCors("AllowSpecificOrigin");

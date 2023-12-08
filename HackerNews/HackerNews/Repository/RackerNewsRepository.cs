@@ -1,5 +1,7 @@
 ﻿using HackerNews.Model;
+using Microsoft.AspNetCore.Server.IIS.Core;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,35 +15,54 @@ namespace HackerNews.Repository
     public class RackerNewsRepository : IRackerNewsRepository
     {
         private readonly IMemoryCache _memoryCache;
-        public RackerNewsRepository(IMemoryCache memoryCache)
+        private readonly ILogger _logger;
+        public RackerNewsRepository(IMemoryCache memoryCache, ILogger logger)
         {
             _memoryCache = memoryCache;
+            _logger = logger;
         }
 
         public List<NewsDbo> GetNewsCacheData()
         {
-            // Check if data is already in the cache
-            List<NewsDbo> cachedData = _memoryCache.Get<List<NewsDbo>>("HackerNews");
-            if (cachedData != null)
+            try
             {
-                return cachedData;
+                // Check if data is already in the cache
+                List<NewsDbo> cachedData = _memoryCache.Get<List<NewsDbo>>("HackerNews");
+                if (cachedData != null)
+                {
+                    return cachedData;
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                _logger.LogError("GetNewsCacheData Repository Error Exception : " + ex);
+                throw;
+            }
         }
 
         // If data is not in the cache, fetch it and store in the cache
         public List<NewsDbo> SetHackerNewsData(List<NewsDbo> newHackerData)
         {
-            List<NewsDbo> cachedData = _memoryCache.Get<List<NewsDbo>>("HackerNews");
-            var cacheEntryOptions = new MemoryCacheEntryOptions
+            try
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1000), // Cache for 1000 minutes
-                SlidingExpiration = TimeSpan.FromMinutes(500) // Refresh the cache if not accessed for 500 minutes
-            };
+                List<NewsDbo> cachedData = _memoryCache.Get<List<NewsDbo>>("HackerNews");
+                var cacheEntryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1000), // Cache for 1000 minutes
+                    SlidingExpiration = TimeSpan.FromMinutes(500) // Refresh the cache if not accessed for 500 minutes
+                };
 
-            _memoryCache.Set("HackerNews", newHackerData, cacheEntryOptions);
+                _memoryCache.Set("HackerNews", newHackerData, cacheEntryOptions);
 
-            return newHackerData;
+                return newHackerData;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("SetHackerNewsData Repository Error Exception : " + ex);
+                throw;
+
+            }
         }
 
 

@@ -15,7 +15,7 @@ namespace HackerNewsUnitTestCase
             var mockRackerNews = new Mock<IRackerNews>();
             mockRackerNews.Setup(r => r.GetHackerNews());
             var controller = new HackerNewsController(mockRackerNews.Object);
-            var result = controller.Index();
+            var result = controller.GetHackerNews();
             // Assert
             Assert.IsType<OkObjectResult>(result);
         }
@@ -26,7 +26,7 @@ namespace HackerNewsUnitTestCase
             var mockRackerNews = new Mock<IRackerNews>();
             mockRackerNews.Setup(r => r.GetHackerNews());
             var controller = new HackerNewsController(mockRackerNews.Object);
-            var result = controller.Index();
+            var result = controller.GetHackerNews();
             // Assert
             Assert.IsType<StatusCodeResult>(result);
         }

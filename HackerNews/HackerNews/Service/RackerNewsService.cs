@@ -1,6 +1,9 @@
 ﻿using HackerNews.Model;
 using HackerNews.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.IIS.Core;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +16,34 @@ namespace HackerNews.Service
     {
         public static IConfiguration _configuration;
         public static IRackerNewsRepository _iRackerNewsRepository;
-        public RackerNewsService(IRackerNewsRepository iRackerNewsRepository, IConfiguration configuration)
+        private  readonly ILogger _logger;
+
+        public RackerNewsService(IRackerNewsRepository iRackerNewsRepository, IConfiguration configuration, ILogger logger)
         {
             _iRackerNewsRepository = iRackerNewsRepository;
             _configuration = configuration;
+            _logger = logger;
         }
         public List<NewsDbo> GetHackerNews()
         {
-            var data = _iRackerNewsRepository.GetNewsCacheData();
-            if (data != null)
+            try
             {
-                return data;
+                var data = _iRackerNewsRepository.GetNewsCacheData();
+                if (data != null)
+                {
+                    return data;
+                }
+                else
+                {
+                    var newHackerData = GetHackerNewsAPI();
+                    var newHackerNewsdata = _iRackerNewsRepository.SetHackerNewsData(newHackerData);
+                    return newHackerData;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var newHackerData = GetHackerNewsAPI();
-                var newHackerNewsdata = _iRackerNewsRepository.SetHackerNewsData(newHackerData);
-                return newHackerData;
+                _logger.LogError("GetHackerNews Service Error Exception : " + ex);
+                throw;
             }
         }
         public List<NewsDbo> GetHackerNewsAPI()
@@ -44,7 +58,7 @@ namespace HackerNews.Service
             }
             return NewsList;
         }
-        static string CallNewsIds()
+         string CallNewsIds()
         {
             string apiUrl = _configuration["ApiSettings:HackerApiUrl"];
             using (HttpClient httpClient = new HttpClient())
@@ -63,13 +77,14 @@ namespace HackerNews.Service
                     }
                     return null;
                 }
-                catch (HttpRequestException ex)
+                catch (Exception ex)
                 {
-                    return null;
+                    _logger.LogError("CallNewsIds API Service Error Exception : " + ex);
+                    throw;
                 }
             }
         }
-        static NewsDbo CallNewsById(long id)
+         NewsDbo CallNewsById(long id)
         {
             string apiUrl = _configuration["ApiSettings:HackerItemApiUrl"] + id + ".json";
             using (HttpClient httpClient = new HttpClient())
@@ -88,9 +103,10 @@ namespace HackerNews.Service
                     }
                     return null;
                 }
-                catch (HttpRequestException ex)
+                catch (Exception ex)
                 {
-                    return null;
+                    _logger.LogError("CallNewsIds API Service Error Exception : " + ex);
+                    throw;
                 }
             }
         }

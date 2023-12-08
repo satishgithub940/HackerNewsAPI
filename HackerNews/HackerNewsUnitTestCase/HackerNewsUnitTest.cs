@@ -43,12 +43,10 @@ namespace HackerNewsUnitTestCase
             // Arrange
             var mockRepository = new Mock<IRackerNewsRepository>();
             var configuration = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
-            var logger = new Mock<ILogger>();
             var cachedData = new List<NewsDbo> { /* initialize with some data */ };
             mockRepository.Setup(repo => repo.GetNewsCacheData()).Returns(cachedData);
-            var mockLogger = new Mock<ILogger<RackerNewsService>>();
             var mockRackerNews = new Mock<IRackerNewsRepository>();
-            var service = new RackerNewsService(mockRackerNews.Object, (Microsoft.Extensions.Configuration.IConfiguration)configuration.Object, logger.Object);
+            var service = new RackerNewsService(mockRackerNews.Object, (Microsoft.Extensions.Configuration.IConfiguration)configuration.Object);
             // Act
             var result = service.GetHackerNews();
 
@@ -65,15 +63,13 @@ namespace HackerNewsUnitTestCase
 
             var mockRepository = new Mock<IRackerNewsRepository>();
             var configuration = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
-            var logger = new Mock<ILogger>();
-            var mockLogger = new Mock<ILogger<RackerNewsService>>();
             var mockRackerNews = new Mock<IRackerNewsRepository>();
 
             var apiData = new List<NewsDbo> { /* initialize with some data */ };
             mockRepository.Setup(repo => repo.GetNewsCacheData()).Returns((List<NewsDbo>)null);
             mockRepository.Setup(repo => repo.SetHackerNewsData(It.IsAny<List<NewsDbo>>())).Returns(apiData);
 
-            var service = new RackerNewsService(mockRackerNews.Object, configuration.Object, logger.Object);
+            var service = new RackerNewsService(mockRackerNews.Object, configuration.Object);
 
             // Act
             var result = service.GetHackerNews();
@@ -89,19 +85,17 @@ namespace HackerNewsUnitTestCase
             // Arrange
             var mockRepository = new Mock<IRackerNewsRepository>();
             var configuration = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
-            var logger = new Mock<ILogger>();
-            var mockLogger = new Mock<ILogger<RackerNewsService>>();
             var mockRackerNews = new Mock<IRackerNewsRepository>();
 
 
             mockRepository.Setup(repo => repo.GetNewsCacheData()).Throws(new Exception("Simulated exception"));
 
-            var service = new RackerNewsService(mockRackerNews.Object, (Microsoft.Extensions.Configuration.IConfiguration)configuration.Object, logger.Object);
+            var service = new RackerNewsService(mockRackerNews.Object,configuration.Object);
 
 
             // Act & Assert
             Assert.Throws<Exception>(() => service.GetHackerNews());
-            mockLogger.Verify(logger => logger.LogError(It.IsAny<string>()), Times.Once);
+            mockRepository.Verify(repo => repo.SetHackerNewsData(It.IsAny<List<NewsDbo>>()), Times.Never);
         }
     }
 }

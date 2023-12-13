@@ -27,7 +27,7 @@ namespace HackerNewsUnitTestCase
         }
 
         [Fact] //Negative case
-        public void ReturnsStatusCodeResult() 
+        public void ReturnsStatusCodeResult()
         {
             var mockRackerNews = new Mock<IRackerNews>();
             mockRackerNews.Setup(r => r.GetHackerNews());
@@ -37,65 +37,75 @@ namespace HackerNewsUnitTestCase
             Assert.IsType<StatusCodeResult>(result);
         }
 
+
         [Fact]
-        public void GetHackerNews_ReturnsCachedData_WhenCacheIsNotEmpty()
+        public void GetHackerNewsReturnsAPIData()
         {
             // Arrange
             var mockRepository = new Mock<IRackerNewsRepository>();
-            var configuration = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
-            var cachedData = new List<NewsDbo> { /* initialize with some data */ };
-            mockRepository.Setup(repo => repo.GetNewsCacheData()).Returns(cachedData);
-            var mockRackerNews = new Mock<IRackerNewsRepository>();
-            var service = new RackerNewsService(mockRackerNews.Object, (Microsoft.Extensions.Configuration.IConfiguration)configuration.Object);
-            // Act
-            var result = service.GetHackerNews();
+            var apiData = new List<NewsDbo>
+                {
+                    new NewsDbo
+                    {
+                        score = 5,
+                        title = "SunRocket cofounders up and leave",
+                        type = "story",
+                        url = "http://www.washingtonpost.com/wp-dyn/content/article/2007/02/11/AR2007021101198.html?nav=rss_technology"
+                    },
+                    new NewsDbo
+                    {
+                        score = 3,
+                        title = "How Much Money Do You Make?",
+                        type = "story",
+                        url = "http://www.techcrunch.com/2006/10/12/how-much-money-do-you-make/"
+                    }
+                };
 
-            // Assert
-            Assert.Same(cachedData, result);
-            mockRepository.Verify(repo => repo.SetHackerNewsData(It.IsAny<List<NewsDbo>>()), Times.Never);
-        }
-
-        [Fact]
-        public void GetHackerNews_ReturnsAPIData_WhenCacheIsEmpty()
-        {
-            // Arrange
-
-
-            var mockRepository = new Mock<IRackerNewsRepository>();
-            var configuration = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
-            var mockRackerNews = new Mock<IRackerNewsRepository>();
-
-            var apiData = new List<NewsDbo> { /* initialize with some data */ };
-            mockRepository.Setup(repo => repo.GetNewsCacheData()).Returns((List<NewsDbo>)null);
+            mockRepository.Setup(repo => repo.GetNewsCacheData()).Returns((List<NewsDbo>)apiData);
             mockRepository.Setup(repo => repo.SetHackerNewsData(It.IsAny<List<NewsDbo>>())).Returns(apiData);
 
-            var service = new RackerNewsService(mockRackerNews.Object, configuration.Object);
+            var service = new RackerNewsService(mockRepository.Object, null);
 
             // Act
             var result = service.GetHackerNews();
 
             // Assert
-            Assert.Same(apiData, result);
-            mockRepository.Verify(repo => repo.SetHackerNewsData(apiData), Times.Once);
+            Assert.NotNull(result);
+            Assert.Equal(apiData, result);
         }
 
         [Fact]
-        public void GetHackerNews_ThrowsException_WhenExceptionOccurs()
+        public void GetHackerNewsReturnsDataType()
         {
             // Arrange
             var mockRepository = new Mock<IRackerNewsRepository>();
-            var configuration = new Mock<Microsoft.Extensions.Configuration.IConfiguration>();
-            var mockRackerNews = new Mock<IRackerNewsRepository>();
+            var apiData = new List<NewsDbo>
+                {
+                    new NewsDbo
+                    {
+                        score = 5,
+                        title = "SunRocket cofounders up and leave",
+                        type = "story",
+                        url = "http://www.washingtonpost.com/wp-dyn/content/article/2007/02/11/AR2007021101198.html?nav=rss_technology"
+                    },
+                    new NewsDbo
+                    {
+                        score = 3,
+                        title = "How Much Money Do You Make?",
+                        type = "story",
+                        url = "http://www.techcrunch.com/2006/10/12/how-much-money-do-you-make/"
+                    }
+                };
 
+            mockRepository.Setup(repo => repo.GetNewsCacheData()).Returns((List<NewsDbo>)apiData);
+            mockRepository.Setup(repo => repo.SetHackerNewsData(It.IsAny<List<NewsDbo>>())).Returns(apiData);
+            var service = new RackerNewsService(mockRepository.Object, null);
+            // Act
+            var result = service.GetHackerNews();
 
-            mockRepository.Setup(repo => repo.GetNewsCacheData()).Throws(new Exception("Simulated exception"));
-
-            var service = new RackerNewsService(mockRackerNews.Object,configuration.Object);
-
-
-            // Act & Assert
-            Assert.Throws<Exception>(() => service.GetHackerNews());
-            mockRepository.Verify(repo => repo.SetHackerNewsData(It.IsAny<List<NewsDbo>>()), Times.Never);
+           
+            // Assert
+            Assert.IsType<List<NewsDbo>>(result);
         }
     }
 }

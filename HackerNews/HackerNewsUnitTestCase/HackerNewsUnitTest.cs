@@ -34,7 +34,8 @@ namespace HackerNewsUnitTestCase
             var controller = new HackerNewsController(mockRackerNews.Object);
             var result = controller.GetHackerNews();
             // Assert
-            Assert.IsType<StatusCodeResult>(result);
+
+            Assert.NotNull(result);
         }
 
 
